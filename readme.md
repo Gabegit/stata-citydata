@@ -7,3 +7,4 @@ is cross-data and the estimation models include:
 * ivreg
 
 The estimation is used to compared with threshold models.
+
