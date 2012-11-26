@@ -13,13 +13,13 @@ bys regions: sum y gdp_per
 // 变量的描述性统计
 estpost sum gdp_per gr_gdp gdp9 gnAv primstu90 highstu90 noAgri90 middstu90 midStuPop invgdp fdigdpAv
 esttab using sum2.rtf, cells("mean(fmt(2)) sd(fmt(2)) min(fmt(1)) max(fmt(0))") nomtitle nonumber replace
-		
+
 
 local rhs1 ly90 lsk lsn lh
 local rhs ly90 lsk lsn lh fdi
 local rhs2 ly90 lsk lsn lh fdi deficit
 local rhs3 ly90 lsk lsn lh fdi isC deficit area
-local rhs4 ly90 lsk lsn lh fdi isC deficit    
+local rhs4 ly90 lsk lsn lh fdi isC deficit
 local rhsiv ly90 lsk lsn lh (fdi= road_av lpop total_power n_phone)
 local rhsiv2 ly90 lsk lsn lh deficit (fdi= road_av lpop total_power n_phone)
 local rhsiv3 ly90 lsk lsn lh deficit area (fdi= road_av lpop total_power n_phone)
@@ -66,19 +66,18 @@ estimates store West
 
 outreg2 [m1 m2 m3 East Central West] using est2.doc, word replace title("表 回归结果比较")
 
-    
-   
-   
-   
+
+
+
 // fdi is endogenous variable on log(pop), road_av,n_phone,electr
 ivreg y `rhsiv'
 estimates store m1
 ivendog
 
-ivreg y `rhsiv2' 
+ivreg y `rhsiv2'
 estimates store m2
 
-ivreg y `rhsiv3' 
+ivreg y `rhsiv3'
 estimates store m3
 
 ivreg y `rhsiv4' if region==1
@@ -93,4 +92,4 @@ estimates store west
 //estout m1 m2 m3 m4 m5 m6, cells(b(star fmt(3)) se(par fmt(2))) ///
  //  legend label varlabels(_cons Constant)
  outreg2 [m1 m2 m3 east central west] using est.doc,word replace title("工具变量回归")
- 
+
